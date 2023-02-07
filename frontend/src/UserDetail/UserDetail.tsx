@@ -28,7 +28,7 @@ export function UserDetail() {
 
 
   return (
-    <div className="userprofile" id="profileBody">
+    <div className="userprofile" >
 
       <img className="userprofilecoverimg" id="coverimg" src={myData.coverImageUrl} alt="Cover Image" />
       <img id="userprofileimage" src={myData.profileImageUrl} alt="Profile Image" />
