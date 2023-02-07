@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { PostList } from './PostList/PostList'
+import { UserDetail } from './UserDetail/UserDetail';
 import{BrowserRouter as Router, Routes,Route,Link} from 'react-router-dom';
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
           <Routes>
             <Route   path='/posts'
                      element= {<PostList />}
+            />
+            <Route   path='/users/:userId/'
+                     element= {<UserDetail />}
             />
           </Routes>
         </Router>
