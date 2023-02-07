@@ -1,0 +1,128 @@
+
+/* USERS PAGE CSS */
+
+#userheading {
+    margin-left: 2.5%;
+}
+
+#userlist {
+    list-style: none;
+    padding: 0;
+}
+
+.userButtons {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+#usrimg {
+    max-width: 90%;
+    height: auto;
+}
+
+.usercontainer {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 50% 50%;
+    height: auto;
+    padding: 20px;
+}
+
+.containerImage {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+}
+
+.containerName {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding-top: 15%;
+    margin-left: 5;
+}
+
+.containerEmail {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin-left: 5px;
+}
+
+/* PC screens */
+@media only screen and (min-width: 1000px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #userbody {
+        margin-top: 2%;
+    }
+
+    #userheading {
+        text-align: center;
+    }
+
+
+    img {
+        max-width: 90%;
+        height: auto;
+    }
+
+    .usercontainerGlobal {
+        display: grid;
+        grid-template-columns: 33% 34% 33%;
+        grid-template-rows: 25% 25% 25% 25%;
+        height: auto;
+        padding: 20px;
+    }
+
+}
+
+
+
+/* Tablet screens */
+@media only screen and (max-width: 1000px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #userbody {
+        text-align: center;
+    }
+
+    img {
+        width: 400;
+    }
+}
+
+/* Mobile screens */
+@media only screen and (max-width: 650px) {
+    h1 {
+        font-size: 20px;
+        font-weight: normal;
+        margin-left: 4%;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: normal;
+    }
+
+    li {
+        font-size: 16px;
+    }
+
+    #userbody {
+        margin-top: 2%;
+        text-align: center;
+    }
+
+
+    img {
+        width: 300;
+    }
+}

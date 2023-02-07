@@ -1,56 +1,74 @@
 import React from "react";  // import React (to provide access to TSX)
 import { useState, useEffect } from 'react'
-import {UserModel} from '../../../src/models/api/userModel'
-import {Page} from '../../../src/models/api/page'
-import{BrowserRouter as Router, Routes,Route,Link} from 'react-router-dom';
+import { UserModel } from '../../../src/models/api/userModel'
+import { Page } from '../../../src/models/api/page'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 
-export function UserList(){
-    const [myData, setMyData] = useState<Page<UserModel> | null >(null);
-    const [queryString, setQueryString] = useState<string | null>("/users");
-
-  
-
-    let dataNext;
-    let dataPrevious;
-
-    useEffect(() => {
-        fetch(`http://localhost:3001${queryString}`)
-        .then(response => response.json())
-        .then(data => setMyData(data))
-        .then(data => console.log(data))
-        .catch(data => console.log(data))
-      }, [queryString]);
-
-    if(!myData){
-      return <div>
-        Waiting for data. 
-      </div>
-    }
+export function UserList() {
+  const [myData, setMyData] = useState<Page<UserModel> | null>(null);
+  const [queryString, setQueryString] = useState<string | null>("/users");
 
 
-    if(myData.next){
-    dataNext = <button onClick={()=>setQueryString(myData.next)}> Next</button>
-    }
 
-    if(myData.previous){
-    dataPrevious = <button onClick={()=>setQueryString(myData.previous)}> Previous</button>  
-    }
+  let dataNext;
+  let dataPrevious;
 
-    return <ul>
-      {myData.results.map((user : UserModel) => {
-          return (<li key={user.id}>
-            {/* Show post message, imageurl, postedBy */}
-            {user.id}
-            <Link to={'/users/' + user.id}>{user.name}</Link>
-            <img src={user.profileImageUrl} />
+  useEffect(() => {
+    fetch(`http://localhost:3001${queryString}`)
+      .then(response => response.json())
+      .then(data => setMyData(data))
+      .then(data => console.log(data))
+      .catch(data => console.log(data))
+  }, [queryString]);
 
-          </li>
-      )
+  if (!myData) {
+    return <div>
+      Waiting for data.
+    </div>
+  }
+
+  if (myData.previous) {
+    dataPrevious = <button className="buttons" onClick={() => setQueryString(myData.previous)}> Previous</button>
+  }
+
+  if (myData.next) {
+    dataNext = <button className="buttons" onClick={() => setQueryString(myData.next)}> Next</button>
+  }
+
+
+
+  return (
+    <div id="entirepage">
+      <div id="userbody">
+        <h1 id="userheading">
+          Users
+        </h1>
+        <ul className="usercontainerGlobal">
+          {myData.results.map((user: UserModel) => {
+            return (
+              <li className="usercontainer">
+                <div className="containerImage">
+                  <img id="usrimg" src={user.profileImageUrl} />
+                </div>
+                <div className="containerName">
+                  <Link to={'/users/' + user.id}>{user.name}</Link>
+                </div>
+                <div className="containerEmail">
+                  {user.email}
+                </div>
+              </li>
+            )
           })}
-      
-      {dataNext}
-      {dataPrevious}
+          <br />
+          <div className="userButtons"> 
+            {dataPrevious}
+            {dataNext}
+          </div>
 
 
-    </ul>}
+        </ul>
+      </div>
+    </div>
+  )
+}

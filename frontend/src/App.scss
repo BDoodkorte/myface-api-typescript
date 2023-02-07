@@ -1,8 +1,16 @@
 @import "./UserDetail/UserDetail.scss";
-
+@import "./UserList/UserList.scss";
 
 body {
   font-family: "Segoe UI", Helvetica, sans-serif;
   color: #ffffff;
   margin: 0;
+}
+
+.buttons {
+  border-radius: 10px;
+  border-color: #ffffff;
+  border-style: solid;
+  background-color: #151820;
+  width: 50%;
 }

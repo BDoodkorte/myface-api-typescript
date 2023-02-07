@@ -70,7 +70,7 @@ export function UserDetail() {
       <h1 className="userlikedposts">Liked posts</h1>
       <ul className="ouruserlikes">
         {myData.likes.map((like: UserPostModel) => {
-          return (<li >
+          return (<li className="specificposts" >
             <img id="userpostimg" src={like.imageUrl} />
             <div id="postUserName">
               <Link to={`/users/${like.id}`}> {like.id}</Link>
@@ -89,7 +89,7 @@ export function UserDetail() {
       <h1 className="userdislikedposts">Disliked posts</h1>
       <ul className="ouruserdislikes">
         {myData.dislikes.map((dislike: UserPostModel) => {
-          return (<li >
+          return (<li className="specificposts">
             <img id="userpostimg" src={dislike.imageUrl} />
             <div id="postUserName">
               <Link to={`/users/${dislike.id}`}> {dislike.id}</Link>
