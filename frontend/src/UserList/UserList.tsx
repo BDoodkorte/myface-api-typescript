@@ -49,7 +49,10 @@ export function UserList() {
             return (
               <li className="usercontainer">
                 <div className="containerImage">
-                  <img id="usrimg" src={user.profileImageUrl} />
+                  <img id="usrimg" src={user.profileImageUrl} onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+              }} />
                 </div>
                 <div className="containerName">
                   <Link to={'/users/' + user.id}>{user.name}</Link>
@@ -60,14 +63,13 @@ export function UserList() {
               </li>
             )
           })}
-          <br />
-          <div className="userButtons"> 
-            {dataPrevious}
-            {dataNext}
-          </div>
+
 
 
         </ul>
+            {dataPrevious}
+            {dataNext}
+
       </div>
     </div>
   )

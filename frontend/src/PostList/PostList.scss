@@ -1,0 +1,68 @@
+/* PC screens */
+
+#postlist {
+    list-style: none;
+    padding: 0;
+}
+
+@media only screen and (min-width: 1000px) {
+
+    #entirepage {
+        display: grid;
+        grid-template-rows: 10% 90%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #postbody {
+        margin-top: 2%;
+        text-align: center;
+
+    }
+
+    img {
+        max-width: 90%;
+        height: auto;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 33% 34% 33%;
+        grid-template-rows: 25% 25% 25% 25%;
+        height: auto;
+    }
+}
+
+
+
+/* Tablet screens */
+@media only screen and (max-width: 1000px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #postbody {
+        text-align: center;
+    }
+
+    img {
+        width: 400;
+    }
+}
+
+/* Large Mobile screens */
+@media only screen and (max-width: 650px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #postbody {
+        text-align: center;
+    }
+
+    img {
+        width: 300;
+    }
+}

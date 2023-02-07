@@ -1,5 +1,6 @@
 @import "./UserDetail/UserDetail.scss";
 @import "./UserList/UserList.scss";
+@import "./PostList/PostList.scss";
 
 body {
   font-family: "Segoe UI", Helvetica, sans-serif;
@@ -12,5 +13,8 @@ body {
   border-color: #ffffff;
   border-style: solid;
   background-color: #151820;
-  width: 50%;
+  width: 10%;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5%;
 }

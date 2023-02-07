@@ -31,7 +31,10 @@ export function UserDetail() {
     <div className="userprofile" >
 
       <img className="userprofilecoverimg" id="coverimg" src={myData.coverImageUrl} alt="Cover Image" />
-      <img id="userprofileimage" src={myData.profileImageUrl} alt="Profile Image" />
+      <img id="userprofileimage" src={myData.profileImageUrl} alt="Profile Image" onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+              }}/>
       <div id="userinfo">
         <h3>
           {myData.name}
@@ -52,7 +55,10 @@ export function UserDetail() {
       <ul className="ouruserposts">
         {myData.posts.map((post: UserPostModel) => {
           return (<li className="specificposts">
-            <img id="userpostimg" src={post.imageUrl} />
+            <img id="userpostimg" src={post.imageUrl} onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+              }}/>
             <div id="postUserName">
               {myData.username}
             </div>
@@ -71,7 +77,10 @@ export function UserDetail() {
       <ul className="ouruserlikes">
         {myData.likes.map((like: UserPostModel) => {
           return (<li className="specificposts" >
-            <img id="userpostimg" src={like.imageUrl} />
+            <img id="userpostimg" src={like.imageUrl} onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+              }}/>
             <div id="postUserName">
               <Link to={`/users/${like.id}`}> {like.id}</Link>
             </div>
@@ -90,7 +99,10 @@ export function UserDetail() {
       <ul className="ouruserdislikes">
         {myData.dislikes.map((dislike: UserPostModel) => {
           return (<li className="specificposts">
-            <img id="userpostimg" src={dislike.imageUrl} />
+            <img id="userpostimg" src={dislike.imageUrl} onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+              }}/>
             <div id="postUserName">
               <Link to={`/users/${dislike.id}`}> {dislike.id}</Link>
             </div>
