@@ -1,39 +1,109 @@
 import React from "react";  // import React (to provide access to TSX)
 import { useState, useEffect } from 'react'
-import {UserModel} from '../../../src/models/api/userModel'
-import {Page} from '../../../src/models/api/page'
-import{BrowserRouter as Router, Routes,Route,Link} from 'react-router-dom';
+import { UserModel, UserPostModel } from '../../../src/models/api/userModel'
+import { Page } from '../../../src/models/api/page'
+import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
 
 
 
-export function UserDetail(){
-    const [myData, setMyData] = useState<UserModel | null >(null);
+export function UserDetail() {
+  const [myData, setMyData] = useState<UserModel | null>(null);
 
-    useEffect(() => {
-        fetch(`http://localhost:3001/users/2`)
-        .then(response => response.json())
-        .catch(response => console.log(response))
-        .then(data => setMyData(data))
-        .then(data => console.log(data))
-        .catch(data => console.log(data))
-      }, []);
+  let { userId } = useParams();
 
-      if(!myData){
-        return <div>
-          Waiting for data. 
-        </div>
-      }
+  useEffect(() => {
+    fetch(`http://localhost:3001/users/${userId}`)
+      .then(response => response.json())
+      .catch(response => console.log(response))
+      .then(data => setMyData(data))
+      .then(data => console.log(data))
+      .catch(data => console.log(data))
+  }, [userId]);
+
+  if (!myData) {
+    return <div>
+      Waiting for data.
+    </div>
+  }
 
 
-return <div>
+  return (
+    <div className="userprofile" id="profileBody">
 
- 
-          <li>
-            {myData.name}
-            <img src={myData.profileImageUrl} />
+      <img className="userprofilecoverimg" id="coverimg" src={myData.coverImageUrl} alt="Cover Image" />
+      <img id="userprofileimage" src={myData.profileImageUrl} alt="Profile Image" />
+      <div id="userinfo">
+        <h3>
+          {myData.name}
+        </h3>
+        <p>
+          <b>
+            {myData.username}
+          </b>
+        </p>
+        <p>
+          {myData.email}
+        </p>
 
+      </div>
+
+
+      <h1 className="userposts">User posts</h1>
+      <ul className="ouruserposts">
+        {myData.posts.map((post: UserPostModel) => {
+          return (<li className="specificposts">
+            <img id="userpostimg" src={post.imageUrl} />
+            <div id="postUserName">
+              {myData.username}
+            </div>
+            <div id="userpostdate">
+              {post.createdAt.toLocaleString()}
+            </div>
+            <div id="userpostmessage">
+              {post.message}
+            </div>
           </li>
-   
-</div>
+          )
+        })}
+      </ul>
 
+      <h1 className="userlikedposts">Liked posts</h1>
+      <ul className="ouruserlikes">
+        {myData.likes.map((like: UserPostModel) => {
+          return (<li >
+            <img id="userpostimg" src={like.imageUrl} />
+            <div id="postUserName">
+              <Link to={`/users/${like.id}`}> {like.id}</Link>
+            </div>
+            <div id="userpostdate">
+              {like.createdAt.toLocaleString()}
+            </div>
+            <div id="userpostmessage">
+              {like.message}
+            </div>
+          </li>
+          )
+        })}
+      </ul>
+
+      <h1 className="userdislikedposts">Disliked posts</h1>
+      <ul className="ouruserdislikes">
+        {myData.dislikes.map((dislike: UserPostModel) => {
+          return (<li >
+            <img id="userpostimg" src={dislike.imageUrl} />
+            <div id="postUserName">
+              <Link to={`/users/${dislike.id}`}> {dislike.id}</Link>
+            </div>
+            <div id="userpostdate">
+              {dislike.createdAt.toLocaleString()}
+            </div>
+            <div id="userpostmessage">
+              {dislike.message}
+            </div>
+          </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
 }

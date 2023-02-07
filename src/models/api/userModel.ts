@@ -1,6 +1,6 @@
 import moment from "moment";
 
-interface UserPostModel {
+export interface UserPostModel {
     id: number;
     message: string;
     imageUrl: string;
