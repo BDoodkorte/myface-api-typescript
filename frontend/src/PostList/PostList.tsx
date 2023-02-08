@@ -1,18 +1,30 @@
 import React from "react";  // import React (to provide access to TSX)
-import { useState, useEffect } from 'react'
+import { useState, useEffect, FormEvent } from 'react'
 import { PostModel } from '../../../src/models/api/postModel'
 import { Page } from '../../../src/models/api/page'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
+import { createLike } from "../APIBackend/APIBackend";
+import { createDislike } from "../APIBackend/APIBackend";
 
 export function PostList() {
   const [myData, setMyData] = useState<Page<PostModel> | null>(null);
   const [queryString, setQueryString] = useState<string | null>("/posts");
-
+  const [postId, setPostId] = useState<number>(0);
 
 
   let dataNext;
   let dataPrevious;
+
+  function handleSubmitLike(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    createLike(postId)
+  }
+  function handleSubmitDislike(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    createDislike(postId)
+  }
+
+
 
   useEffect(() => {
     fetch(`http://localhost:3001${queryString}`)
@@ -54,7 +66,12 @@ export function PostList() {
               <p>
                 <Link to={'/users/' + post.postedBy.id}>{post.postedBy.name}</Link>
               </p>
-
+              <form className="buttonform" onSubmit={(e) => handleSubmitLike(e)}>
+                <button type="submit" className="likebutton" onClick={()=> setPostId(post.id)} >Like</button>
+              </form>
+              <form className="buttonform" onSubmit={(e) => handleSubmitDislike(e)}>
+                <button type="submit" className="dislikebutton" onClick={()=> setPostId(post.id)} >Dislike</button>
+              </form>
 
             </li>
             )

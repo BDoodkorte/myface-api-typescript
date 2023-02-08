@@ -3,28 +3,35 @@ import './App.scss'
 import { PostList } from './PostList/PostList'
 import { UserList } from './UserList/UserList';
 import { UserDetail } from './UserDetail/UserDetail';
-import{BrowserRouter as Router, Routes,Route,Link} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { CreateUser } from './CreateUser/CreateUser';
+import { CreatePost } from './CreatePost/CreatePost';
 
 function App() {
 
 
   return (
- 
-        <Router>
-          <Routes>
-            <Route   path='/posts'
-                     element= {<PostList />}
-            />
-            <Route   path='/users/'
-                     element= {<UserList />}
-            />
-            <Route   path='/users/:userId/'
-                     element= {<UserDetail />}
-            />
-          </Routes>
-        </Router>
 
- );
+    <Router>
+      <Routes>
+        <Route path='/posts'
+          element={<PostList />}
+        />
+        <Route path='/users/'
+          element={<UserList />}
+        />
+        <Route path='/users/:userId/'
+          element={<UserDetail />}
+        />
+        <Route path='/users/create'
+          element={<CreateUser />}
+        />
+        <Route path='/posts/create'
+          element={<CreatePost />}
+        />      </Routes>
+    </Router>
+
+  );
 }
 
 export default App
