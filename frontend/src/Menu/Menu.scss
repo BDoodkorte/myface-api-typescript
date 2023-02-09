@@ -1,0 +1,171 @@
+@media only screen and (min-width: 1000px) {
+    #menu-button {
+        display: none;
+    }
+
+    #close-button {
+        display: none;
+    }
+
+    .menuoptionnone {
+        display: none;
+    }
+
+    .menuoptionpc {
+
+        position: fixed;
+        font-size: 24px;
+        background-color: #151820;
+        color: #ffffff;
+
+        left: 0;
+        right: 0;
+        top: 0;
+
+        width: 100%;
+        height: 6%;
+
+        display: grid;
+        grid-template-columns: 15% 25% 10% 10% 15% 15%;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    a:active {
+        text-decoration: none;
+    }
+
+
+    #menuMyFace {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    #menuPosts {
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+    #menuUsers {
+        grid-column-start: 4;
+        grid-column-end: 5;
+    }
+
+    #menuNewPosts {
+        grid-column-start: 5;
+        grid-column-end: 6;
+    }
+
+    #menuNewUsers {
+        grid-column-start: 6;
+        grid-column-end: 7;
+    }
+
+    header {
+        background-color: #151820;
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .menuoptionpc {
+        display: none;
+    }
+
+    #menu-button {
+        display: block;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 25px;
+        color: white;
+        border: none;
+        background: none;
+        border-radius: 10px;
+        box-shadow: 0px 0px 2px 2px black;
+    }
+
+    #close-button {
+        display: block;
+        position: absolute;
+        top: 8px;
+        right: 15px;
+        font-size: 25px;
+        color: white;
+        border: none;
+        background: none;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .menuoptionnone {
+        display: none;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    a:active {
+        text-decoration: none;
+    }
+
+    .menuoptionblock {
+
+        position: fixed;
+        right: 8px;
+        font-size: 24px;
+        background-color: #151820;
+        color: #ffffff;
+
+        width: 50%;
+        height: 100%;
+
+        text-align: center;
+
+        display: grid;
+        grid-template-rows: 10% 20% 10% 10% 10%;
+    }
+
+    #menuMyFace {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    #menuPosts {
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    #menuUsers {
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+    #menuNewPosts {
+        grid-row-start: 5;
+        grid-row-end: 6;
+    }
+
+    header {
+        background-color: #151820;
+    }
+}

@@ -2,13 +2,15 @@ import React from "react";  // import React (to provide access to TSX)
 import { useState, useEffect } from 'react'
 import { UserModel } from '../../../src/models/api/userModel'
 import { Page } from '../../../src/models/api/page'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { MenuBar } from "../Menu/Menu";
 
 
 export function UserList() {
   const [myData, setMyData] = useState<Page<UserModel> | null>(null);
   const [queryString, setQueryString] = useState<string | null>("/users");
 
+  const navigate = useNavigate();
 
 
   let dataNext;
@@ -40,6 +42,12 @@ export function UserList() {
 
   return (
     <div id="entirepage">
+            <MenuBar />
+      {/* <div className="navigationButtonGroup">
+        <button type="button" className="navigationbutton" onClick={() => navigate("/posts")} >Post List</button>
+        <button type="button" className="navigationbutton" onClick={() => navigate("/users/create")} >Create User</button>
+        <button type="button" className="navigationbutton" onClick={() => navigate("/posts/create")} >Create Post</button>
+      </div> */}
       <div id="userbody">
         <h1 id="userheading">
           Users
@@ -50,9 +58,9 @@ export function UserList() {
               <li className="usercontainer">
                 <div className="containerImage">
                   <img id="usrimg" src={user.profileImageUrl} onError={({ currentTarget }) => {
-                currentTarget.onerror = null;
-                currentTarget.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-              }} />
+                    currentTarget.onerror = null;
+                    currentTarget.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+                  }} />
                 </div>
                 <div className="containerName">
                   <Link to={'/users/' + user.id}>{user.name}</Link>
@@ -67,8 +75,8 @@ export function UserList() {
 
 
         </ul>
-            {dataPrevious}
-            {dataNext}
+        {dataPrevious}
+        {dataNext}
 
       </div>
     </div>

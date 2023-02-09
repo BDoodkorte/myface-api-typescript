@@ -26,10 +26,11 @@ export function createUser(name: string, username: string, email: string, profil
             console.log(fetchResponse)
             if (!fetchResponse.ok) {
                 let errorString = ""
-                fetchResponse.errors.map((error : any) => {
+                fetchResponse.errors.map((error: any) => {
                     errorString += ", " + error.param;
                 })
-                throw new Error(`Invalid entry: ${errorString}`);            }
+                throw new Error(`Invalid entry: ${errorString}`);
+            }
             else {
                 return fetchResponse;
             }
@@ -59,7 +60,7 @@ export function createPost(message: string, imageUrl: string): Promise<Response>
             console.log(fetchResponse)
             if (!fetchResponse.ok) {
                 let errorString = ""
-                fetchResponse.errors.map((error : any) => {
+                fetchResponse.errors.map((error: any) => {
                     errorString += ", " + error.param;
                 })
                 throw new Error(`Invalid entry: ${errorString}`);
@@ -85,8 +86,7 @@ export function createLike(postId: number): Promise<Response> {
         .then(fetchResponse => {
             console.log(fetchResponse)
             if (!fetchResponse.ok) {
-                alert("Help!");
-                throw new Error("Invalid entry");
+                throw new Error(postId.toString());
             }
             else {
                 return fetchResponse;
@@ -109,8 +109,7 @@ export function createDislike(postId: number): Promise<Response> {
         .then(fetchResponse => {
             console.log(fetchResponse)
             if (!fetchResponse.ok) {
-                alert("Help!");
-                throw new Error("Invalid entry");
+                throw new Error(postId.toString());
             }
             else {
                 return fetchResponse;

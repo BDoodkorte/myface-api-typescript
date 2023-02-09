@@ -1,10 +1,13 @@
 import React from "react";  // import React (to provide access to TSX)
-import { useState, useEffect, FormEvent,} from 'react'
+import { useState, useEffect, FormEvent, } from 'react'
 import { UserModel } from '../../../src/models/api/userModel'
 import { Page } from '../../../src/models/api/page'
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { isJSDocLinkLike } from "typescript";
 import { createPost } from "../APIBackend/APIBackend";
+import { MenuBar } from "../Menu/Menu";
+
+
 
 export function CreatePost() {
     const [message, setMessage] = useState<string>("");
@@ -12,49 +15,59 @@ export function CreatePost() {
     const [error, setError] = useState<string>("");
 
     const navigate = useNavigate();
-    
+
 
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
         createPost(message, imageUrl)
-        .then(()=>  {    
-            alert("Thank you for submitting a post!")      
-            navigate("/posts")
-        })
-        .catch((e) => setError(e.message))
-        }
-    
+            .then(() => {
+                alert("Thank you for submitting a post!")
+                navigate("/posts")
+            })
+            .catch((e) => setError(e.message))
+    }
+
 
     return (
-        <div>
+        <div id="entirepage">
+                  <MenuBar />
+            {/* <div className="navigationButtonGroup">
+                <button type="button" className="navigationbutton" onClick={() => navigate("/users")} >Users List</button>
+                <button type="button" className="navigationbutton" onClick={() => navigate("/users/create")} >Create User</button>
+                <button type="button" className="navigationbutton" onClick={() => navigate("/posts")} >Post List</button>
+            </div> */}
             <h1>Create Post</h1>
             <p>{error}</p>
-            <form onSubmit={(e) => {
+            <div className="formBox">
+            <form className="create-user-form" onSubmit={(e) => {
                 handleSubmit(e)
-                }}>
+            }}>
                 <label>
                     Message:
-                    <input
+                    </label>
+                    <input className="create-user-input"
                         type="text"
                         name="message"
                         onChange={event => setMessage(event.target.value)}
                     />
-                </label>
+                
                 <br />
                 <p></p>
                 <label>
                     Image URL:
-                    <input
+                    </label>
+                    <input className="create-user-input"
                         type="text"
                         name="imageUrl"
                         onChange={event => setImageUrl(event.target.value)}
                     />
-                </label>
+                
                 <br />
                 <p></p>
-                <button type="submit">Submit</button>
+                <button className="create-user-submit" type="submit">Submit</button>
             </form>
+            </div>
         </div>
 
     )

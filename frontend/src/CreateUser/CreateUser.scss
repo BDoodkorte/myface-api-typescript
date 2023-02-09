@@ -1,0 +1,39 @@
+
+
+.create-user-form {
+    display: grid;
+    row-gap: 5px;
+    width: 35%;
+    min-width: 290px;
+    border-radius: 10px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    background: #151820;
+    padding: 8%;
+}
+
+.create-user-input {
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+}
+
+.create-user-submit {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 35px;
+    align-content: center;
+    border-radius: 10px;
+    border-color: #ffffff;
+    border-style: solid;
+    background-color: #151820;
+    margin-right: 5%;
+
+}
+
+label {
+    grid-column-start: 1;
+    grid-column-end: 1;
+
+}

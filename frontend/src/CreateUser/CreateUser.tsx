@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Link, redirect } from 'react-ro
 import { isJSDocLinkLike } from "typescript";
 import { createUser } from "../APIBackend/APIBackend";
 import { useNavigate } from "react-router-dom";
+import { MenuBar } from "../Menu/Menu";
 
 export function CreateUser() {
     const [name, setName] = useState<string>("");
@@ -21,8 +22,8 @@ export function CreateUser() {
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
         createUser(name, userName, email, profileImageUrl, coverImageUrl)
-            .then(()=>  {    
-                alert("Welcome to MyFace!")      
+            .then(() => {
+                alert("Welcome to MyFace!")
                 navigate("/users")
             })
             .catch((e) => setError(e.message))
@@ -32,63 +33,74 @@ export function CreateUser() {
 
     return (
         <div>
+            <MenuBar />
+            {/* <div className="navigationButtonGroup">
+                <button type="button" className="navigationbutton" onClick={() => navigate("/users")} >Users List</button>
+                <button type="button" className="navigationbutton" onClick={() => navigate("/posts")} >Post List</button>
+                <button type="button" className="navigationbutton" onClick={() => navigate("/posts/create")} >Create Post</button>
+            </div> */}
             <h1>Create User</h1>
             <p>{error}</p>
-            <form onSubmit={(e) => {
+            <form className="create-user-form" onSubmit={(e) => {
                 handleSubmit(e)
             }
             }>
                 <label>
                     Name:
-                    <input
-                        type="text"
-                         name="name"
-                        onChange={event => setName(event.target.value)}
-                    />
                 </label>
+                <input className="create-user-input "
+                    type="text"
+                    name="name"
+                    onChange={event => setName(event.target.value)}
+                />
+
                 <br />
                 <p></p>
                 <label>
                     Username:
-                    <input
-                        type="text"
-                         name="username"
-                        onChange={event => setuserName(event.target.value)}
-                    />
                 </label>
+                <input className="create-user-input "
+                    type="text"
+                    name="username"
+                    onChange={event => setuserName(event.target.value)}
+                />
+
                 <br />
                 <p></p>
                 <label>
                     Email:
-                    <input
-                        type="email"
-                         name="email"
-                        onChange={event => setEmail(event.target.value)}
-                    />
                 </label>
+                <input className="create-user-input "
+                    type="email"
+                    name="email"
+                    onChange={event => setEmail(event.target.value)}
+                />
+
                 <br />
                 <p></p>
-                <label>
+                <label >
                     ProfileImageUrl:
-                    <input
-                        type="text"
-                         name="profileImageUrl"
-                        onChange={event => setProfileImageUrl(event.target.value)}
-                    />
                 </label>
+                <input className="create-user-input "
+                    type="text"
+                    name="profileImageUrl"
+                    onChange={event => setProfileImageUrl(event.target.value)}
+                />
+
                 <br />
                 <p></p>
                 <label>
                     CoverImageUrl:
-                    <input
-                        type="text"
-                        name="coverImageUrl"
-                        onChange={event => setCoverImageUrl(event.target.value)}
-                    />
                 </label>
+                <input className="create-user-input "
+                    type="text"
+                    name="coverImageUrl"
+                    onChange={event => setCoverImageUrl(event.target.value)}
+                />
+
                 <br />
                 <p></p>
-                <button type="submit">Submit</button>
+                <button className="create-user-submit" type="submit">Submit</button>
             </form>
         </div>
 
