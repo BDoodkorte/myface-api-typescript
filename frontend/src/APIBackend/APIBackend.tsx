@@ -21,12 +21,15 @@ export function createUser(name: string, username: string, email: string, profil
     }
 
     const response = fetch(url, submitbody)
+        .then(fetchResponse => fetchResponse.json())
         .then(fetchResponse => {
             console.log(fetchResponse)
             if (!fetchResponse.ok) {
-                alert("Help!");
-                throw new Error("Invalid entry");
-            }
+                let errorString = ""
+                fetchResponse.errors.map((error : any) => {
+                    errorString += ", " + error.param;
+                })
+                throw new Error(`Invalid entry: ${errorString}`);            }
             else {
                 return fetchResponse;
             }
@@ -51,11 +54,15 @@ export function createPost(message: string, imageUrl: string): Promise<Response>
     }
 
     const response = fetch(url, submitbody)
+        .then(fetchResponse => fetchResponse.json())
         .then(fetchResponse => {
             console.log(fetchResponse)
             if (!fetchResponse.ok) {
-                alert("Help!");
-                throw new Error("Invalid entry");
+                let errorString = ""
+                fetchResponse.errors.map((error : any) => {
+                    errorString += ", " + error.param;
+                })
+                throw new Error(`Invalid entry: ${errorString}`);
             }
             else {
                 return fetchResponse;

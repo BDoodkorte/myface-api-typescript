@@ -9,6 +9,7 @@ import { createPost } from "../APIBackend/APIBackend";
 export function CreatePost() {
     const [message, setMessage] = useState<string>("");
     const [imageUrl, setImageUrl] = useState<string>("");
+    const [error, setError] = useState<string>("");
 
     const navigate = useNavigate();
     
@@ -21,14 +22,14 @@ export function CreatePost() {
             alert("Thank you for submitting a post!")      
             navigate("/posts")
         })
-        .catch((error) => {
-            console.log("Oh no, it went wrong", error)
-        })
-    }
+        .catch((e) => setError(e.message))
+        }
+    
 
     return (
         <div>
             <h1>Create Post</h1>
+            <p>{error}</p>
             <form onSubmit={(e) => {
                 handleSubmit(e)
                 }}>
@@ -36,7 +37,7 @@ export function CreatePost() {
                     Message:
                     <input
                         type="text"
-                        required name="message"
+                        name="message"
                         onChange={event => setMessage(event.target.value)}
                     />
                 </label>
@@ -46,7 +47,7 @@ export function CreatePost() {
                     Image URL:
                     <input
                         type="text"
-                        required name="imageUrl"
+                        name="imageUrl"
                         onChange={event => setImageUrl(event.target.value)}
                     />
                 </label>

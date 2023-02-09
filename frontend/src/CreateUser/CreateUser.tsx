@@ -13,6 +13,8 @@ export function CreateUser() {
     const [email, setEmail] = useState<string>("");
     const [profileImageUrl, setProfileImageUrl] = useState<string>("");
     const [coverImageUrl, setCoverImageUrl] = useState<string>("");
+    const [error, setError] = useState<string>("");
+
 
     const navigate = useNavigate();
 
@@ -23,15 +25,15 @@ export function CreateUser() {
                 alert("Welcome to MyFace!")      
                 navigate("/users")
             })
-            .catch((error) => {
-                console.log("Oh no, it went wrong", error)
-            })
+            .catch((e) => setError(e.message))
+
 
     }
 
     return (
         <div>
             <h1>Create User</h1>
+            <p>{error}</p>
             <form onSubmit={(e) => {
                 handleSubmit(e)
             }
@@ -40,7 +42,7 @@ export function CreateUser() {
                     Name:
                     <input
                         type="text"
-                        required name="name"
+                         name="name"
                         onChange={event => setName(event.target.value)}
                     />
                 </label>
@@ -50,7 +52,7 @@ export function CreateUser() {
                     Username:
                     <input
                         type="text"
-                        required name="username"
+                         name="username"
                         onChange={event => setuserName(event.target.value)}
                     />
                 </label>
@@ -60,7 +62,7 @@ export function CreateUser() {
                     Email:
                     <input
                         type="email"
-                        required name="email"
+                         name="email"
                         onChange={event => setEmail(event.target.value)}
                     />
                 </label>
@@ -70,7 +72,7 @@ export function CreateUser() {
                     ProfileImageUrl:
                     <input
                         type="text"
-                        required name="profileImageUrl"
+                         name="profileImageUrl"
                         onChange={event => setProfileImageUrl(event.target.value)}
                     />
                 </label>
@@ -80,7 +82,7 @@ export function CreateUser() {
                     CoverImageUrl:
                     <input
                         type="text"
-                        required name="coverImageUrl"
+                        name="coverImageUrl"
                         onChange={event => setCoverImageUrl(event.target.value)}
                     />
                 </label>
