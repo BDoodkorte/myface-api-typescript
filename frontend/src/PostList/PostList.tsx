@@ -2,7 +2,7 @@ import React from "react";  // import React (to provide access to TSX)
 import { useState, useEffect, FormEvent } from 'react'
 import { PostModel } from '../../../src/models/api/postModel'
 import { Page } from '../../../src/models/api/page'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { createLike } from "../APIBackend/APIBackend";
 import { createDislike } from "../APIBackend/APIBackend";
 
@@ -11,6 +11,7 @@ export function PostList() {
   const [queryString, setQueryString] = useState<string | null>("/posts");
   const [postId, setPostId] = useState<number>(0);
 
+const navigate = useNavigate();
 
   let dataNext;
   let dataPrevious;
@@ -48,9 +49,14 @@ export function PostList() {
   if (myData.previous) {
     dataPrevious = <button className="buttons" onClick={() => setQueryString(myData.previous)}> Previous</button>
   }
-
+  
   return (
     <div id="entirepage">
+      <div className="navigationButtonGroup">
+        <button type="button" className="navigationbutton" onClick={()=> navigate("/users")} >List Users</button>
+        <button type="button" className="navigationbutton" onClick={()=> navigate("/users/create")} >Create User</button>
+        <button type="button" className="navigationbutton" onClick={()=> navigate("/posts/create")} >Create Post</button>
+      </div>
       <div id="postbody">
         <h1 >
           Posts

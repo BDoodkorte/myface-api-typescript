@@ -67,6 +67,9 @@
     }
 }
 
+#headerButtons {
+    text-align: center;
+}
 .buttonform{
     padding-right: 1%;
     padding-left: 1%;
@@ -87,4 +90,20 @@
     border-color: #ffffff;
     border-style: solid;
     background-color: #411313;
+}
+.navigationButtonGroup{
+    width : 10%;
+
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    float: left; /* Float the buttons side by side */
+
+}
+
+.navigationbutton{
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+    background-color: red;
 }
