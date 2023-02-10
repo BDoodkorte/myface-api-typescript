@@ -42,7 +42,6 @@ export function UserList() {
 
   return (
     <div id="entirepage">
-            <MenuBar />
       {/* <div className="navigationButtonGroup">
         <button type="button" className="navigationbutton" onClick={() => navigate("/posts")} >Post List</button>
         <button type="button" className="navigationbutton" onClick={() => navigate("/users/create")} >Create User</button>

@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My Component Test that snapshot of CreateUser component matches previous snapshot 1`] = `
+<div>
+  <h1>
+    Create User
+  </h1>
+  <p />
+  <form
+    className="create-user-form"
+    onSubmit={[Function]}
+  >
+    <label>
+      Name:
+    </label>
+    <input
+      className="create-user-input "
+      name="name"
+      onChange={[Function]}
+      type="text"
+    />
+    <br />
+    <p />
+    <label>
+      Username:
+    </label>
+    <input
+      className="create-user-input "
+      name="username"
+      onChange={[Function]}
+      type="text"
+    />
+    <br />
+    <p />
+    <label>
+      Email:
+    </label>
+    <input
+      className="create-user-input "
+      name="email"
+      onChange={[Function]}
+      type="email"
+    />
+    <br />
+    <p />
+    <label>
+      ProfileImageUrl:
+    </label>
+    <input
+      className="create-user-input "
+      name="profileImageUrl"
+      onChange={[Function]}
+      type="text"
+    />
+    <br />
+    <p />
+    <label>
+      CoverImageUrl:
+    </label>
+    <input
+      className="create-user-input "
+      name="coverImageUrl"
+      onChange={[Function]}
+      type="text"
+    />
+    <br />
+    <p />
+    <button
+      className="create-user-submit"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

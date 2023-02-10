@@ -64,7 +64,7 @@ export function PostList() {
 
   return (
     <div id="entirepage">
-      <MenuBar />
+
       {/* <div className="navigationButtonGroup">
         <button type="button" className="navigationbutton" onClick={() => navigate("/users")} >Users List</button>
         <button type="button" className="navigationbutton" onClick={() => navigate("/users/create")} >Create User</button>

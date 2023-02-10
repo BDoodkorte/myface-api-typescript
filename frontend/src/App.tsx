@@ -6,14 +6,18 @@ import { UserDetail } from './UserDetail/UserDetail';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { CreateUser } from './CreateUser/CreateUser';
 import { CreatePost } from './CreatePost/CreatePost';
+import { MenuBar } from './Menu/Menu';
 
 function App() {
 
 
   return (
-
     <Router>
+            <MenuBar />
       <Routes>
+      <Route path='/'
+          element={<CreateUser />}
+        />
         <Route path='/posts'
           element={<PostList />}
         />
@@ -28,7 +32,8 @@ function App() {
         />
         <Route path='/posts/create'
           element={<CreatePost />}
-        />      </Routes>
+        />      
+        </Routes>
     </Router>
 
   );

@@ -33,7 +33,7 @@ export function CreateUser() {
 
     return (
         <div>
-            <MenuBar />
+
             {/* <div className="navigationButtonGroup">
                 <button type="button" className="navigationbutton" onClick={() => navigate("/users")} >Users List</button>
                 <button type="button" className="navigationbutton" onClick={() => navigate("/posts")} >Post List</button>
